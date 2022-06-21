@@ -1,28 +1,30 @@
 import objectsiteducks.helpers.Browsers;
 import objectsiteducks.helpers.ScreenshotListener;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import java.time.Duration;
 
 @Listeners(ScreenshotListener.class)
 public class TestBase {
-
-    WebDriver driver;
+    protected Logger LOG = Logger.getLogger(TestBase.class);
+    protected WebDriver driver;
 
     @BeforeMethod
     public void openBrowser() {
+        LOG.info("Opening the browser");
         Browsers browser = Browsers.valueOf(System.getProperty("browser", "chrome"));
         switch (browser) {
             case chrome: {
+                LOG.info("Browser opens Chrome");
                 System.setProperty("webdriver.chrome.driver","C:\\SeleniumDrivers\\chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
             }
             case firefox: {
+                LOG.info("Browser opens Firefox");
                 System.setProperty("webdriver.firefox.driver","C:\\SeleniumDrivers\\geckodriver.exe");
                 driver = new FirefoxDriver();
                 break;
@@ -37,6 +39,7 @@ public class TestBase {
 
     @AfterMethod
     public void closeBrowser() {
+        LOG.info("Close the browser");
         if (driver != null) {
             driver.close();
             driver.quit();

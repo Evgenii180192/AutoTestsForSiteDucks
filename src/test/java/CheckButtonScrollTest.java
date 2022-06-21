@@ -8,6 +8,7 @@ public class CheckButtonScrollTest extends TestBase {
     @Test
     public void clickButtonScroll() {
         ButtonScroll buttonScroll = new ButtonScroll(driver);
+        LOG.info("Scroll the page, click on the scroll up button");
         buttonScroll.clickButtonScroll();
     }
 

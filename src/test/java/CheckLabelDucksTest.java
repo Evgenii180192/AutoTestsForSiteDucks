@@ -12,6 +12,7 @@ public class CheckLabelDucksTest extends TestBase {
     public void checkLabelYellowDuck() {
         NavigationSiteDucks navigationSiteDucks = new NavigationSiteDucks(driver);
         navigationSiteDucks.clickSubcategory();
+        LOG.info("We take the text from the label");
         String labelTextYellowDuck =
                 driver.findElement(By.xpath("//div[@class=\"sticker sale\"][contains(text(), 'Sale')]")).getText();
         System.out.println(labelTextYellowDuck);
@@ -23,6 +24,7 @@ public class CheckLabelDucksTest extends TestBase {
     public void checkLabelGreenDuck() {
         NavigationSiteDucks navigationSiteDucks = new NavigationSiteDucks(driver);
         navigationSiteDucks.clickSubcategory();
+        LOG.info("We take the text from the label");
         String labelTextGreenDuck = driver.findElement(By.xpath("//div[@title=\"New\"]")).getText();
         System.out.println(labelTextGreenDuck);
         Assert.assertEquals(labelTextGreenDuck, "NEW");

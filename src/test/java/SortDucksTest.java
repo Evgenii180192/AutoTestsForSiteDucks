@@ -16,10 +16,12 @@ public class SortDucksTest extends TestBase {
         NavigationSiteDucks navigationSiteDucks = new NavigationSiteDucks(driver);
         navigationSiteDucks.clickSubcategory();
         sortDucks.sortDucksName();
+        LOG.info("We take the names of ducks");
         String nameDucksGreenSort =
                 driver.findElement(By.xpath("//div[@class='name'][contains(text(), 'Green DucK')]")).getText();
         String nameDucksYellowSort =
                 driver.findElement(By.xpath("//div[@class='name'][contains(text(), 'Yellow Duck')]")).getText();
+        LOG.info("We put the names of ducks in the collection and sort");
         ArrayList<String> sortListNameDucks = new ArrayList<>();
         sortListNameDucks.add(nameDucksGreenSort);
         sortListNameDucks.add(nameDucksYellowSort);
@@ -27,6 +29,7 @@ public class SortDucksTest extends TestBase {
         for (String name : sortListNameDucks) {
             System.out.println(name);
         }
+        LOG.info("We take the names of ducks and put them in the collection, but do not sort");
         String nameDucksGreen =
                 driver.findElement(By.xpath("//div[@class='name'][contains(text(), 'Green DucK')]")).getText();
         String nameDucksYellow =
@@ -47,8 +50,10 @@ public class SortDucksTest extends TestBase {
         NavigationSiteDucks navigationSiteDucks = new NavigationSiteDucks(driver);
         navigationSiteDucks.clickSubcategory();
         sortDucks.sortDucksPrice();
+        LOG.info("We take the prices of ducks");
         String sortYellowDucksPrice = driver.findElement(By.xpath("//strong[@class='campaign-price']")).getText();
         String sortGreenDucksPrice = driver.findElement(By.xpath("//span[@class='price']")).getText();
+        LOG.info("We put the prices of ducks in the collection and sort");
         ArrayList <String> sortListPriceDucks = new ArrayList<>();
         sortListPriceDucks.add(sortGreenDucksPrice);
         sortListPriceDucks.add(sortYellowDucksPrice);
@@ -56,6 +61,7 @@ public class SortDucksTest extends TestBase {
         for (String price : sortListPriceDucks) {
             System.out.println(price);
         }
+        LOG.info("We take the prices of ducks and put them in the collection, but do not sort");
         String yellowDucksPrice = driver.findElement(By.xpath("//strong[@class='campaign-price']")).getText();
         String greenDucksPrice = driver.findElement(By.xpath("//span[@class='price']")).getText();
         ArrayList <String> listPriceDucks = new ArrayList<>();
